@@ -36,14 +36,15 @@ class FirstScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
+                    children: const [
+                       Text(
                         "UN",
                         style: TextStyle(
                           shadows: [
                             Shadow(
-                              color: Colors.red,
-                              offset: Offset(1.0, -5.0),
+                              color: Color.fromARGB(255, 209, 140, 140),
+                              offset: Offset(1.0, 5.0),
+                              blurRadius: 5
                             )
                           ],
                           decoration: TextDecoration.underline,
@@ -57,6 +58,13 @@ class FirstScreen extends StatelessWidget {
                       Text(
                         "BIND",
                         style: TextStyle(
+                          shadows: [
+                            Shadow(
+                              color: Color.fromARGB(255, 109, 92, 92),
+                              offset: Offset(1,5),
+                              blurRadius: 5
+                            )
+                          ],
                           decoration: TextDecoration.overline,
                           decorationColor: Colors.red,
 
@@ -87,7 +95,7 @@ class FirstScreen extends StatelessWidget {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => LoginScreen()),
+                        MaterialPageRoute(builder: (context) => LoginScreen(name1: "Harsh",name2: "Yash",name3: "Rutvi",)),
                       );
                     },
                     child: Expanded(
