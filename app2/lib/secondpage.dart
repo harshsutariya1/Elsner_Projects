@@ -10,7 +10,7 @@ class Listview extends StatefulWidget {
 }
 
 class _ListviewState extends State<Listview> {
-  List images = [
+  final List images = [
     "bike.jpg",
     "map.jpg",
     "triangle.jpg",

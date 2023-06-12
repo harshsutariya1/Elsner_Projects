@@ -65,8 +65,10 @@ flutter:
     - assets/bike.jpg/
     - assets/cube.jpg/
     - assets/moon.jpg/
+    - assets/login.png/
     - assets/infinity.jpg/
     - assets/map.jpg/
+    - assets/userLoginIcon.png/
     - assets/triangle.jpg/
 
   # An image asset can refer to one or more resolution-specific "variants", see

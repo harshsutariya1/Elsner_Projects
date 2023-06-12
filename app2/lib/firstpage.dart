@@ -7,8 +7,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 class Login extends StatelessWidget {
   Login({super.key});
 
-  TextEditingController username = TextEditingController();
-  TextEditingController password = TextEditingController();
+  final TextEditingController username = TextEditingController();
+  final TextEditingController password = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +21,10 @@ class Login extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Image.asset(
+              "login.png",
+              height: 200,
+            ),
             SizedBox(
               width: 300,
               child: TextField(
