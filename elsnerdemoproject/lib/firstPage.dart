@@ -30,6 +30,22 @@ class _LoginScreenState extends State<LoginScreen> {
     });
   }
 
+  void onsubmit() {
+    if (EmailValidator.validate(username.text)) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => LoginDetails(
+            username: username.text,
+            password: password.text,
+          ),
+        ),
+      );
+    } else {
+      Fluttertoast.showToast(msg: "Enter Your Email.");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -98,15 +114,7 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(height: 50),
               ElevatedButton.icon(
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => LoginDetails(
-                        username: username.text,
-                        password: password.text,
-                      ),
-                    ),
-                  );
+                  onsubmit();
                 },
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all<Color>(Colors.red),
