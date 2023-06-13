@@ -17,6 +17,7 @@ class Login extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.red,
       ),
+      
       body: Center(
         child: SingleChildScrollView(
           child: Column(
@@ -34,6 +35,7 @@ class Login extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20)),
                     labelText: "Username",
                     hintText: "Enter Your Email.",
+                    helperText: "",
                     icon: const Icon(
                       Icons.person,
                       color: Colors.red,
@@ -42,7 +44,7 @@ class Login extends StatelessWidget {
                   controller: username,
                 ),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 0),
               SizedBox(
                 width: 300,
                 child: TextField(
@@ -66,7 +68,6 @@ class Login extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-
                       builder: (context) => LoginDetails(
                         username: username.text,
                         password: password.text,
