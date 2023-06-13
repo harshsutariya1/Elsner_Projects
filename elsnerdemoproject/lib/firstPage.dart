@@ -3,21 +3,45 @@
 import 'secondpage.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:email_validator/email_validator.dart';
 
-class Login extends StatelessWidget {
-  Login({super.key});
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
 
-  final TextEditingController username = TextEditingController();
-  final TextEditingController password = TextEditingController();
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  TextEditingController username = TextEditingController();
+  TextEditingController password = TextEditingController();
+  String helpertext = "";
+  Color helpercolor = Colors.blue;
+
+  void emailvalidating(String email) {
+    setState(() {
+      if (EmailValidator.validate(email)) {
+        helpertext = "Valid Email";
+        helpercolor = Colors.blue;
+      } else {
+        helpertext = "Invalid Email";
+        helpercolor = Colors.red;
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.red,
+        title: Text("Login"),
+        centerTitle: true,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        foregroundColor: Colors.red,
       ),
-      
+      // extendBody: true,
       body: Center(
         child: SingleChildScrollView(
           child: Column(
@@ -35,16 +59,25 @@ class Login extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20)),
                     labelText: "Username",
                     hintText: "Enter Your Email.",
-                    helperText: "",
+                    helperText: helpertext,
+                    helperStyle: TextStyle(color: helpercolor),
                     icon: const Icon(
                       Icons.person,
                       color: Colors.red,
                     ),
                   ),
                   controller: username,
+                  onChanged: (value) {
+                    emailvalidating(value);
+                  },
+                  onSubmitted: (value) => setState(() {
+                    if (value != "" && EmailValidator.validate(value)) {
+                      helpertext = "";
+                    }
+                  }),
                 ),
               ),
-              const SizedBox(height: 0),
+              const SizedBox(height: 10),
               SizedBox(
                 width: 300,
                 child: TextField(
@@ -86,6 +119,7 @@ class Login extends StatelessWidget {
         ),
       ),
     ));
+    ;
   }
 }
 

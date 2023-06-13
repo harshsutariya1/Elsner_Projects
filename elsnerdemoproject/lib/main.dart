@@ -16,7 +16,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
 class Welcome extends StatelessWidget {
   const Welcome({super.key});
 
@@ -36,15 +35,14 @@ class Welcome extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     mainAxisSize: MainAxisSize.min,
                     children: const [
-                       Text(
+                      Text(
                         "UN",
                         style: TextStyle(
                           shadows: [
                             Shadow(
-                              color: Color.fromARGB(255, 209, 140, 140),
-                              offset: Offset(1.0, 5.0),
-                              blurRadius: 5
-                            )
+                                color: Color.fromARGB(255, 209, 140, 140),
+                                offset: Offset(1.0, 5.0),
+                                blurRadius: 5)
                           ],
                           decoration: TextDecoration.underline,
                           decorationColor: Colors.black,
@@ -59,14 +57,12 @@ class Welcome extends StatelessWidget {
                         style: TextStyle(
                           shadows: [
                             Shadow(
-                              color: Color.fromARGB(255, 109, 92, 92),
-                              offset: Offset(1,5),
-                              blurRadius: 5
-                            )
+                                color: Color.fromARGB(255, 109, 92, 92),
+                                offset: Offset(1, 5),
+                                blurRadius: 5)
                           ],
                           decoration: TextDecoration.overline,
                           decorationColor: Colors.red,
-
                           decorationThickness: 2,
                           color: Colors.black,
                           fontSize: 50,
@@ -81,7 +77,7 @@ class Welcome extends StatelessWidget {
                 height: 150,
               ),
               const Text(
-                "Welcome! Let's find you some services.",
+                "Welcome!\n\nLet's find you some services.",
                 style: TextStyle(fontSize: 20),
               ),
               const SizedBox(
@@ -94,7 +90,8 @@ class Welcome extends StatelessWidget {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Login()),
+                        MaterialPageRoute(
+                            builder: (context) => const LoginScreen()),
                       );
                     },
                     child: Expanded(
@@ -121,8 +118,10 @@ class Welcome extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => const SignupScreen()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const SignupScreen()));
                     },
                     child: Expanded(
                       child: Container(
