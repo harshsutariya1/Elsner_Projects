@@ -90,7 +90,7 @@ class Welcome extends StatelessWidget {
                 children: [
                   InkWell(
                     onTap: () {
-                      Navigator.pushReplacement(
+                      Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) => const LoginScreen()),

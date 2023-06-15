@@ -7,6 +7,10 @@ import 'package:email_validator/email_validator.dart';
 import 'loginFunctionality.dart';
 import 'secondpage.dart';
 
+// ________________________________________________________________________________________
+// ____________________________Login_Screen________________________________________________
+// ________________________________________________________________________________________
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -15,9 +19,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-// __________________________________________________________________________________________
-// __________________________________________________________________________________________
-
+// _____________________________________________________________________________
   TextEditingController username = TextEditingController();
   TextEditingController password = TextEditingController();
   String? helpertext = "";
@@ -58,9 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
       Fluttertoast.showToast(msg: "Enter valid Email or Password!!");
     }
   }
-// __________________________________________________________________________________________
-// __________________________________________________________________________________________
-
+// _____________________________________________________________________________
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -205,7 +205,7 @@ class _LoginDetailsState extends State<LoginDetails> {
   }
 }
 // ________________________________________________________________________________________
-// ________________________________________________________________________________________
+// __________________________SignUp_Screen_________________________________________________
 // ________________________________________________________________________________________
 
 class SignupScreen extends StatelessWidget {
