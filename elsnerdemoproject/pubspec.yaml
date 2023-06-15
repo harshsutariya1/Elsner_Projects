@@ -31,6 +31,7 @@ environment:
 dependencies:
   fluttertoast: ^8.2.2
   email_validator: ^2.1.17
+  shared_preferences: ^2.1.2
   flutter:
     sdk: flutter
 
@@ -70,6 +71,9 @@ flutter:
     - assets/map.jpg
     - assets/userLoginIcon.png
     - assets/triangle.jpg
+    - assets/mountains.jpg
+    - assets/fox.jpg
+    - assets/car.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

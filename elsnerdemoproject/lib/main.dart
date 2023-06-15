@@ -1,6 +1,9 @@
+import 'package:elsnerdemoproject/elsnerLogo.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'firstPage.dart';
+import 'loginFunctionality.dart';
 
 void main() => runApp(const MyApp());
 
@@ -11,10 +14,52 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Welcome(),
+      home: SplashScreen(),
     );
   }
 }
+
+// __________________________________________________________________________________________
+// ______________________________SplashScreen________________________________________________
+// __________________________________________________________________________________________
+
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(const Duration(seconds: 3), () {
+      LoginFunctionality().checkLoginStatus(ctx: context);
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+        child: Scaffold(
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color.fromRGBO(255, 253, 253, 0.73),
+              Color.fromARGB(130, 255, 17, 0),
+            ],
+          ),
+        ),
+        child: const Center(child: ElsnerLogo()),
+      ),
+    ));
+  }
+}
+// __________________________________________________________________________________________
+// ___________________________________WelcomeScreen__________________________________________
+// __________________________________________________________________________________________
 
 class Welcome extends StatelessWidget {
   const Welcome({super.key});
@@ -27,68 +72,25 @@ class Welcome extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Column(
-                // mainAxisSize: MainAxisSize.min,
-                // mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.min,
-                    children: const [
-                      Text(
-                        "UN",
-                        style: TextStyle(
-                          shadows: [
-                            Shadow(
-                                color: Color.fromARGB(255, 209, 140, 140),
-                                offset: Offset(1.0, 5.0),
-                                blurRadius: 5)
-                          ],
-                          decoration: TextDecoration.underline,
-                          decorationColor: Colors.black,
-                          decorationThickness: 2,
-                          color: Colors.red,
-                          fontSize: 50,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        "BIND",
-                        style: TextStyle(
-                          shadows: [
-                            Shadow(
-                                color: Color.fromARGB(255, 109, 92, 92),
-                                offset: Offset(1, 5),
-                                blurRadius: 5)
-                          ],
-                          decoration: TextDecoration.overline,
-                          decorationColor: Colors.red,
-                          decorationThickness: 2,
-                          color: Colors.black,
-                          fontSize: 50,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+              const ElsnerLogo(),
               const SizedBox(
-                height: 150,
+                height: 100,
               ),
               const Text(
                 "Welcome!\n\nLet's find you some services.",
                 style: TextStyle(fontSize: 20),
               ),
               const SizedBox(
-                height: 50,
+                height: 100,
               ),
+// __________________________________________________________________________________________
+// _________________________________Buttons__________________________________________________
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   InkWell(
                     onTap: () {
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                             builder: (context) => const LoginScreen()),
@@ -144,7 +146,9 @@ class Welcome extends StatelessWidget {
                     ),
                   ),
                 ],
-              )
+              ),
+// __________________________________________________________________________________________
+// __________________________________________________________________________________________
             ],
           ),
         ),
@@ -152,3 +156,6 @@ class Welcome extends StatelessWidget {
     );
   }
 }
+// ________________________________________________________________________________________
+// ________________________________________________________________________________________
+// ________________________________________________________________________________________

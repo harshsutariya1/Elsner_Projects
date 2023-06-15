@@ -1,9 +1,11 @@
 //Login and SignUp screens.
 
-import 'secondpage.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:email_validator/email_validator.dart';
+
+import 'loginFunctionality.dart';
+import 'secondpage.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -13,12 +15,15 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+// __________________________________________________________________________________________
+// __________________________________________________________________________________________
+
   TextEditingController username = TextEditingController();
   TextEditingController password = TextEditingController();
-  String helpertext = "";
-  Color helpercolor = Colors.blue;
+  String? helpertext = "";
+  Color? helpercolor = Colors.blue;
 
-  void emailvalidating(String email) {
+  void emailvalidatingtext(String email) {
     setState(() {
       if (EmailValidator.validate(email)) {
         helpertext = "Valid Email";
@@ -30,28 +35,42 @@ class _LoginScreenState extends State<LoginScreen> {
     });
   }
 
+  bool passwordCheck(String pass) {
+    return pass!=""?true:false;
+  }
+
   void onsubmit() {
-    if (EmailValidator.validate(username.text)) {
-      Navigator.push(
+    if (EmailValidator.validate(username.text) &&
+        passwordCheck(password.text)) {
+      LoginFunctionality()
+          .saveLoginData(username: username.text, password: password.text);
+      Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => LoginDetails(
-            username: username.text,
-            password: password.text,
-          ),
+          builder: (context) => const Listview(),
         ),
       );
+      Fluttertoast.showToast(
+        msg: "Login Successful!",
+        toastLength: Toast.LENGTH_SHORT,
+      );
     } else {
-      Fluttertoast.showToast(msg: "Enter Your Email.");
+      Fluttertoast.showToast(msg: "Enter valid Email or Password!!");
     }
   }
+// __________________________________________________________________________________________
+// __________________________________________________________________________________________
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+      backgroundColor: const Color.fromARGB(255, 247, 247, 247),
       appBar: AppBar(
-        title: Text("Login"),
+        title: const Text(
+          "Login",
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+        ),
         centerTitle: true,
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -84,7 +103,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   controller: username,
                   onChanged: (value) {
-                    emailvalidating(value);
+                    emailvalidatingtext(value);
                   },
                   onSubmitted: (value) => setState(() {
                     if (value != "" && EmailValidator.validate(value)) {
@@ -127,9 +146,11 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     ));
-    ;
   }
 }
+// ________________________________________________________________________________________
+// ______________________Extra_Code________________________________________________________
+// ________________________________________________________________________________________
 
 class LoginDetails extends StatefulWidget {
   LoginDetails({super.key, this.username, this.password});
@@ -183,6 +204,9 @@ class _LoginDetailsState extends State<LoginDetails> {
     );
   }
 }
+// ________________________________________________________________________________________
+// ________________________________________________________________________________________
+// ________________________________________________________________________________________
 
 class SignupScreen extends StatelessWidget {
   const SignupScreen({super.key});
@@ -199,3 +223,6 @@ class SignupScreen extends StatelessWidget {
     );
   }
 }
+// ________________________________________________________________________________________
+// ________________________________________________________________________________________
+// ________________________________________________________________________________________

@@ -1,7 +1,11 @@
 //First page after login...
 // Gallery
 
+// import 'package:elsnerdemoproject/firstPage.dart';
+import 'package:elsnerdemoproject/loginFunctionality.dart';
+import 'package:elsnerdemoproject/main.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Listview extends StatefulWidget {
   const Listview({super.key});
@@ -11,23 +15,51 @@ class Listview extends StatefulWidget {
 }
 
 class _ListviewState extends State<Listview> {
+  void getUsername() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    name = preferences.getString("Username");
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getUsername();
+  }
+
+  String? name;
   final List images = [
     "map.jpg",
     "triangle.jpg",
     "cube.jpg",
     "moon.jpg",
     "infinity.jpg",
+    "mountains.jpg",
+    "fox.jpg",
+    "car.jpg",
   ];
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+// ________________________________________________________________________________________
+// ________________________________________________________________________________________
         appBar: AppBar(
           backgroundColor: Colors.red,
-          title: const Text("List View"),
+          title: Text("$name",overflow: TextOverflow.fade,),
           centerTitle: true,
+          actions: [
+            IconButton(
+                onPressed: () {
+                  LoginFunctionality().clearLoginData();
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => const Welcome()));
+                },
+                icon: const Icon(Icons.logout))
+          ],
         ),
+// ________________________________________________________________________________________
+// ________________________________________________________________________________________
         body: Column(
           children: [
             const SizedBox(
@@ -37,9 +69,13 @@ class _ListviewState extends State<Listview> {
             Expanded(
               child: ListView.separated(
                 itemCount: images.length,
+                // ___________________________________________________________________
                 separatorBuilder: (BuildContext context, int index) {
-                  return const Divider(thickness: 5,);
+                  return const Divider(
+                    thickness: 5,
+                  );
                 },
+                // ___________________________________________________________________
                 itemBuilder: (BuildContext context, int index) {
                   return Row(
                     children: [
@@ -107,24 +143,29 @@ class _ListviewState extends State<Listview> {
             ),
           ],
         ),
+// ________________________________________________________________________________________
+// ________________________________________________________________________________________
       ),
     );
   }
 }
 
+// ________________________________________________________________________________________
+// ________________________________________________________________________________________
+// ________________________________________________________________________________________
 class ImageShow extends StatelessWidget {
   ImageShow(
     this.image, {
     super.key,
   });
-  String image = "";
+  String image;
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Color.fromARGB(0, 244, 67, 54),
+          backgroundColor: const Color.fromARGB(0, 244, 67, 54),
         ),
         backgroundColor: Colors.black,
         body: Center(
@@ -134,3 +175,6 @@ class ImageShow extends StatelessWidget {
     );
   }
 }
+// ________________________________________________________________________________________
+// ________________________________________________________________________________________
+// ________________________________________________________________________________________
