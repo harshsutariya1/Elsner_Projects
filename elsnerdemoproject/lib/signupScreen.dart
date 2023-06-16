@@ -20,7 +20,7 @@ class SignupScreen extends StatelessWidget {
           elevation: 0,
           centerTitle: true,
         ),
-        body: Column(children: [
+        body: Column(children: const [
           
         ]),
       ),
