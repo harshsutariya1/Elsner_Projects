@@ -2,8 +2,9 @@ import 'package:elsnerdemoproject/elsnerLogo.dart';
 import 'package:flutter/material.dart';
 // import 'package:shared_preferences/shared_preferences.dart';
 
-import 'firstPage.dart';
+import 'loginScreen.dart';
 import 'loginFunctionality.dart';
+import 'signupScreen.dart';
 
 void main() => runApp(const MyApp());
 
@@ -102,6 +103,15 @@ class Welcome extends StatelessWidget {
                         height: 50,
                         width: 100,
                         decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.red.withOpacity(0.25),
+                                blurRadius: 5,
+                                blurStyle: BlurStyle.normal,
+                                spreadRadius: 5
+                                // offset: Offset(0,5)
+                                )
+                          ],
                           color: const Color.fromARGB(255, 255, 7, 7),
                           borderRadius: BorderRadius.circular(20),
                         ),
@@ -131,6 +141,15 @@ class Welcome extends StatelessWidget {
                         height: 50,
                         width: 100,
                         decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.25),
+                              blurRadius: 5,
+                              blurStyle: BlurStyle.normal,
+                              spreadRadius: 5,
+                              // offset: ()
+                            )
+                          ],
                           color: const Color.fromARGB(255, 53, 49, 35),
                           borderRadius: BorderRadius.circular(20),
                         ),

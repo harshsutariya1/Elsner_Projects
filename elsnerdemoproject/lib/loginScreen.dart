@@ -5,7 +5,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:email_validator/email_validator.dart';
 
 import 'loginFunctionality.dart';
-import 'secondpage.dart';
+import 'homeScreen.dart';
 
 // ________________________________________________________________________________________
 // ____________________________Login_Screen________________________________________________
@@ -38,7 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   bool passwordCheck(String pass) {
-    return pass!=""?true:false;
+    return pass != "" ? true : false;
   }
 
   void onsubmit() {
@@ -60,12 +60,13 @@ class _LoginScreenState extends State<LoginScreen> {
       Fluttertoast.showToast(msg: "Enter valid Email or Password!!");
     }
   }
+
 // _____________________________________________________________________________
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      backgroundColor: const Color.fromARGB(255, 247, 247, 247),
+      backgroundColor: Color.fromRGBO(247, 247, 247, 1),
       appBar: AppBar(
         title: const Text(
           "Login",
@@ -112,7 +113,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   }),
                 ),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 5),
               SizedBox(
                 width: 300,
                 child: TextField(
@@ -204,25 +205,3 @@ class _LoginDetailsState extends State<LoginDetails> {
     );
   }
 }
-// ________________________________________________________________________________________
-// __________________________SignUp_Screen_________________________________________________
-// ________________________________________________________________________________________
-
-class SignupScreen extends StatelessWidget {
-  const SignupScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.red,
-        ),
-        body: const Center(child: Text("Signup Screen...")),
-      ),
-    );
-  }
-}
-// ________________________________________________________________________________________
-// ________________________________________________________________________________________
-// ________________________________________________________________________________________
