@@ -2,9 +2,10 @@
 // Gallery
 
 // import 'package:elsnerdemoproject/firstPage.dart';
-import 'package:elsnerdemoproject/loginFunctionality.dart';
+import 'package:elsnerdemoproject/Functionality/loginFunctionality.dart';
 import 'package:elsnerdemoproject/main.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Listview extends StatefulWidget {
@@ -60,6 +61,7 @@ class _ListviewState extends State<Listview> {
                   LoginFunctionality().clearLoginData();
                   Navigator.pushReplacement(context,
                       MaterialPageRoute(builder: (context) => const Welcome()));
+                  Fluttertoast.showToast(msg: "Loged Out Successfully");
                 },
                 icon: const Icon(Icons.logout))
           ],
@@ -154,8 +156,6 @@ class _ListviewState extends State<Listview> {
             ],
           ),
         ),
-// ________________________________________________________________________________________
-// ________________________________________________________________________________________
       ),
     );
   }

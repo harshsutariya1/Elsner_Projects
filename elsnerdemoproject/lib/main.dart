@@ -1,9 +1,9 @@
-import 'package:elsnerdemoproject/elsnerLogo.dart';
+import 'package:elsnerdemoproject/Functionality/elsnerLogo.dart';
 import 'package:flutter/material.dart';
 // import 'package:shared_preferences/shared_preferences.dart';
 
 import 'loginScreen.dart';
-import 'loginFunctionality.dart';
+import 'Functionality/loginFunctionality.dart';
 import 'signupScreen.dart';
 
 void main() => runApp(const MyApp());
@@ -91,7 +91,7 @@ class Welcome extends StatelessWidget {
                 children: [
                   InkWell(
                     onTap: () {
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                             builder: (context) => const LoginScreen()),
@@ -133,7 +133,7 @@ class Welcome extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const SignupScreen()));
+                              builder: (context) => SignupScreen()));
                     },
                     child: Expanded(
                       child: Container(

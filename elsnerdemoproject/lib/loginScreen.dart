@@ -1,10 +1,11 @@
 //Login and SignUp screens.
 
+// import 'package:elsnerdemoproject/homeScreen2.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:email_validator/email_validator.dart';
 
-import 'loginFunctionality.dart';
+import 'Functionality/loginFunctionality.dart';
 import 'homeScreen.dart';
 
 // ________________________________________________________________________________________
@@ -66,7 +67,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      backgroundColor: Color.fromRGBO(247, 247, 247, 1),
+      backgroundColor: const Color.fromRGBO(247, 247, 247, 1),
       appBar: AppBar(
         title: const Text(
           "Login",
