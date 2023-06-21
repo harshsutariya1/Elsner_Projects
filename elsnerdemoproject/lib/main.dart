@@ -108,8 +108,7 @@ class Welcome extends StatelessWidget {
                                 color: Colors.red.withOpacity(0.25),
                                 blurRadius: 5,
                                 blurStyle: BlurStyle.normal,
-                                spreadRadius: 5
-                                )
+                                spreadRadius: 5)
                           ],
                           color: const Color.fromARGB(255, 255, 7, 7),
                           borderRadius: BorderRadius.circular(20),
