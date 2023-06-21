@@ -1,6 +1,7 @@
 //Login and SignUp screens.
 
 // import 'package:elsnerdemoproject/homeScreen2.dart';
+import 'package:elsnerdemoproject/signupScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:email_validator/email_validator.dart';
@@ -92,8 +93,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 width: 300,
                 child: TextField(
                   decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20)),
+                    border: const OutlineInputBorder(
+                        borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(20),
+                      bottomLeft: Radius.circular(20),
+                    )),
                     labelText: "Username",
                     hintText: "Enter Your Email.",
                     helperText: helpertext,
@@ -118,12 +122,14 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(
                 width: 300,
                 child: TextField(
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(20),
+                          topRight: Radius.circular(20)),
                     ),
                     labelText: "Password",
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.lock,
                       color: Colors.red,
                     ),
@@ -133,15 +139,50 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               const SizedBox(height: 50),
-              ElevatedButton.icon(
-                onPressed: () {
-                  onsubmit();
-                },
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(Colors.red),
+              SizedBox(
+                width: 200,
+                height: 40,
+                child: ElevatedButton(
+                  onPressed: () {
+                    onsubmit();
+                  },
+                  style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all<Color>(Colors.red),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
+                  ),
+                  child: const Text(
+                    "Login",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                 ),
-                icon: const Icon(Icons.arrow_forward),
-                label: const Text("Login"),
+              ),
+              const Divider(
+                thickness: 3,
+                indent: 30,
+                endIndent: 30,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text("Don't have account?"),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => SignupScreen()),
+                      );
+                    },
+                    child: const Text(
+                      "Sign up",
+                      style: TextStyle(color: Colors.blue),
+                    ),
+                  )
+                ],
               )
             ],
           ),

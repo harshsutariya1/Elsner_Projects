@@ -47,7 +47,7 @@ class SignupScreen extends StatelessWidget {
                       ),
                       controller: fullname,
                       validator: (value) {
-                        if (value!.isEmpty) {
+                        if (value?.isEmpty ?? true) {
                           return "Please enter your name.";
                         } else {
                           return null;
@@ -94,22 +94,31 @@ class SignupScreen extends StatelessWidget {
                       controller: retypepassword,
                     ),
                   ),
-                  ElevatedButton.icon(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.red,
-                      foregroundColor: Colors.white,
+                  SizedBox(
+                    width: 200,
+                    height: 40,
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all(Colors.red),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.circular(20)))),
+                      child: const Text(
+                        "Sign Up",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      onPressed: () {
+                        if (Form.of(context)!.validate()) {
+                          Fluttertoast.showToast(msg: "Form is valid");
+                        } else {
+                          Fluttertoast.showToast(
+                              msg: "Please fill all the fields!");
+                        }
+                      },
                     ),
-                    label: const Text(
-                      "Sign Up",
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                    ),
-                    onPressed: () {
-                      if (Form.of(context)!.validate()) {
-                        Fluttertoast.showToast(msg: "Form is valid");
-                      }
-                    },
-                    icon: const Icon(Icons.arrow_forward),
                   )
                 ]),
           ),
