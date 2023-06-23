@@ -8,10 +8,10 @@ import 'package:fluttertoast/fluttertoast.dart';
 class SignupScreen extends StatelessWidget {
   SignupScreen({super.key});
   final _formkey = GlobalKey<FormState>();
-  TextEditingController fullname = TextEditingController();
-  TextEditingController email = TextEditingController();
-  TextEditingController password = TextEditingController();
-  TextEditingController retypepassword = TextEditingController();
+  final TextEditingController fullname = TextEditingController();
+  final TextEditingController email = TextEditingController();
+  final TextEditingController password = TextEditingController();
+  final TextEditingController retypepassword = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -111,7 +111,7 @@ class SignupScreen extends StatelessWidget {
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                       onPressed: () {
-                        if (Form.of(context)!.validate()) {
+                        if (Form.of(context).validate()) {
                           Fluttertoast.showToast(msg: "Form is valid");
                         } else {
                           Fluttertoast.showToast(

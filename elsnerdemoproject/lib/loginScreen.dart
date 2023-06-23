@@ -195,55 +195,55 @@ class _LoginScreenState extends State<LoginScreen> {
 // ______________________Extra_Code________________________________________________________
 // ________________________________________________________________________________________
 
-class LoginDetails extends StatefulWidget {
-  LoginDetails({super.key, this.username, this.password});
-  String? username = "name", password = "pass";
-  @override
-  State<LoginDetails> createState() => _LoginDetailsState();
-}
+// class LoginDetails extends StatefulWidget {
+//   LoginDetails({super.key, this.username, this.password});
+//   String? username = "name", password = "pass";
+//   @override
+//   State<LoginDetails> createState() => _LoginDetailsState();
+// }
 
-class _LoginDetailsState extends State<LoginDetails> {
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.red,
-          title: const Text("Login Details."),
-          centerTitle: true,
-        ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text("Username: ${widget.username}"),
-              Text("Password: ${widget.password}"),
-              const SizedBox(
-                height: 20,
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  Fluttertoast.showToast(
-                    msg: "Login Sucessful!!!",
-                    backgroundColor: Colors.red,
-                    toastLength: Toast.LENGTH_SHORT,
-                    gravity: ToastGravity.BOTTOM,
-                    textColor: Colors.white,
-                  );
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const Listview()),
-                  );
-                },
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.red),
-                ),
-                child: const Text("Next Page"),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
+// class _LoginDetailsState extends State<LoginDetails> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return SafeArea(
+//       child: Scaffold(
+//         appBar: AppBar(
+//           backgroundColor: Colors.red,
+//           title: const Text("Login Details."),
+//           centerTitle: true,
+//         ),
+//         body: Center(
+//           child: Column(
+//             mainAxisAlignment: MainAxisAlignment.center,
+//             children: [
+//               Text("Username: ${widget.username}"),
+//               Text("Password: ${widget.password}"),
+//               const SizedBox(
+//                 height: 20,
+//               ),
+//               ElevatedButton(
+//                 onPressed: () {
+//                   Fluttertoast.showToast(
+//                     msg: "Login Sucessful!!!",
+//                     backgroundColor: Colors.red,
+//                     toastLength: Toast.LENGTH_SHORT,
+//                     gravity: ToastGravity.BOTTOM,
+//                     textColor: Colors.white,
+//                   );
+//                   Navigator.push(
+//                     context,
+//                     MaterialPageRoute(builder: (context) => const Listview()),
+//                   );
+//                 },
+//                 style: ButtonStyle(
+//                   backgroundColor: MaterialStateProperty.all(Colors.red),
+//                 ),
+//                 child: const Text("Next Page"),
+//               ),
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }

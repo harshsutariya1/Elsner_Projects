@@ -165,11 +165,11 @@ class _ListviewState extends State<Listview> {
 // ________________________________________________________________________________________
 // ________________________________________________________________________________________
 class ImageShow extends StatelessWidget {
-  ImageShow(
+  const ImageShow(
     this.image, {
     super.key,
   });
-  String image;
+  final String image;
 
   @override
   Widget build(BuildContext context) {
@@ -180,7 +180,7 @@ class ImageShow extends StatelessWidget {
         ),
         backgroundColor: Colors.black,
         body: Center(
-          child: Container(child: Image.asset("$image")),
+          child: Image.asset(image),
         ),
       ),
     );
