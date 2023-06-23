@@ -1,4 +1,5 @@
 import 'package:elsnerdemoproject/Functionality/elsnerLogo.dart';
+import 'package:elsnerdemoproject/homeScreen2.dart';
 import 'package:flutter/material.dart';
 // import 'package:shared_preferences/shared_preferences.dart';
 
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      home: HomeScreen2(),
     );
   }
 }
