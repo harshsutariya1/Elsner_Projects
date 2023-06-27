@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 // ________________________________________________________________________________________
 // __________________________SignUp_Screen_________________________________________________
@@ -7,11 +6,14 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 class SignupScreen extends StatelessWidget {
   SignupScreen({super.key});
-  final _formkey = GlobalKey<FormState>();
+  // final _formkey = GlobalKey<FormState>();
   final TextEditingController fullname = TextEditingController();
   final TextEditingController email = TextEditingController();
   final TextEditingController password = TextEditingController();
   final TextEditingController retypepassword = TextEditingController();
+
+  final snackBar =
+      const SnackBar(content: Text("Please fill all the fields..."));
 
   @override
   Widget build(BuildContext context) {
@@ -25,103 +27,86 @@ class SignupScreen extends StatelessWidget {
           elevation: 0,
           centerTitle: true,
         ),
-        body: Form(
-          key: _formkey,
-          child: Center(
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  const Text(
-                    "Create Account",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
-                  ),
-                  SizedBox(
-                    width: 300,
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                        hintText: "Enter Your Full Name.",
-                        labelText: "Full Name",
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
+        body: Center(
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                const Text(
+                  "Create Account",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+                ),
+                SizedBox(
+                  width: 300,
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      hintText: "Enter Your Full Name.",
+                      labelText: "Full Name",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
                       ),
-                      controller: fullname,
-                      validator: (value) {
-                        if (value?.isEmpty ?? true) {
-                          return "Please enter your name.";
-                        } else {
-                          return null;
-                        }
-                      },
                     ),
+                    controller: fullname,
                   ),
-                  SizedBox(
-                    width: 300,
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                        labelText: "Email id",
-                        hintText: "Enter Your Email.",
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
+                ),
+                SizedBox(
+                  width: 300,
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      labelText: "Email id",
+                      hintText: "Enter Your Email.",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
                       ),
-                      controller: email,
                     ),
+                    controller: email,
                   ),
-                  SizedBox(
-                    width: 300,
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                        labelText: "Password",
-                        hintText: "Enter Password.",
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
+                ),
+                SizedBox(
+                  width: 300,
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      labelText: "Password",
+                      hintText: "Enter Password.",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
                       ),
-                      controller: password,
                     ),
+                    controller: password,
                   ),
-                  SizedBox(
-                    width: 300,
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                        hintText: "Retype Your Password",
-                        labelText: "Confirm Password",
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
+                ),
+                SizedBox(
+                  width: 300,
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      hintText: "Retype Your Password",
+                      labelText: "Confirm Password",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
                       ),
-                      controller: retypepassword,
                     ),
+                    controller: retypepassword,
                   ),
-                  SizedBox(
-                    width: 200,
-                    height: 40,
-                    child: ElevatedButton(
-                      style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all(Colors.red),
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(20)))),
-                      child: const Text(
-                        "Sign Up",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      onPressed: () {
-                        if (Form.of(context).validate()) {
-                          Fluttertoast.showToast(msg: "Form is valid");
-                        } else {
-                          Fluttertoast.showToast(
-                              msg: "Please fill all the fields!");
-                        }
-                      },
+                ),
+                SizedBox(
+                  width: 200,
+                  height: 40,
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(Colors.red),
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20)))),
+                    child: const Text(
+                      "Sign Up",
+                      style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                  )
-                ]),
-          ),
+                    onPressed: () {
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    },
+                  ),
+                )
+              ]),
         ),
       ),
     );
