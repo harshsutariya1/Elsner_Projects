@@ -1,12 +1,12 @@
 import 'package:elsnerdemoproject/Functionality/elsnerLogo.dart';
-import 'package:elsnerdemoproject/homeScreen2.dart';
+import 'package:elsnerdemoproject/Screens/homeScreen2.dart';
 // import 'package:elsnerdemoproject/homeScreen2.dart';
 import 'package:flutter/material.dart';
 // import 'package:shared_preferences/shared_preferences.dart';
 
-import 'loginScreen.dart';
+import 'Screens/loginScreen.dart';
 import 'Functionality/loginFunctionality.dart';
-import 'signupScreen.dart';
+import 'Screens/signupScreen.dart';
 
 void main() => runApp(const MyApp());
 
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: ApiExample(),
     );

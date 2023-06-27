@@ -43,68 +43,74 @@
 //   }
 // }
 
+// ignore_for_file: avoid_print
+
 import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-class ApiCalling {
-  String? fact;
-  int? length;
+class ApiData {
+  String fact;
+  int length;
+  ApiData({required this.fact, required this.length});
 
-  ApiCalling({this.fact, this.length});
-
-  ApiCalling.fromJson(Map<String, dynamic> json) {
-    fact = json['fact'];
-    length = json['length'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['fact'] = this.fact;
-    data['length'] = this.length;
-    return data;
-  }
+  // List<Map<String, dynamic>> mapingapidata() {
+  //   return [{"fact": fact, "length": length}];
+  // }
 }
 
-Future<List<ApiCalling>?> fetchCats() async {
+Future fetchCats() async {
   final response = await http.get(Uri.parse("https://catfact.ninja/fact"));
 
   if (response.statusCode == 200) {
     // The request was successful.
-    print("status code = 200");
-    final jsonData = jsonDecode(response.body);
-    print("json data created");
-    List<ApiCalling> cats = [];
-    print("list initialized");
-    try {
-      for (var cat in jsonData) {
-        cats.add(ApiCalling.fromJson(cat));
-      }
-    print("list created");
-    } catch (Exception) {
-      print("list creation failed");
-    }
-    return cats;
+    print("status code = 200.");
+    var jsonData = jsonDecode(response.body);
+    // print("json data fetched.");
+
+    // for (var index in jsonData) {
+    //   print("Adding data into list index : $index");
+    //   ApiData ad = ApiData(fact: index["fact"], length: index["length"]);
+    //   datas.add(ad.fact);
+    // }
+    print("list intialized.");
+    List facts = [];
+    facts.add(jsonData["fact"]);
+    print("list created. length = ${facts.length}");
+    return facts;
   } else {
-    print("api failed");
+    print("api fetching failed.");
     // The request failed.
     return null;
   }
 }
 
 class ApiExample extends StatefulWidget {
+  const ApiExample({super.key});
+
   @override
   _ApiExampleState createState() => _ApiExampleState();
 }
 
 class _ApiExampleState extends State<ApiExample> {
-  List<ApiCalling> cats = [];
+  List catFact = [];
 
   Future<void> _refreshData() async {
-      print("refreshed data");
-    setState(() async {
-      cats = (await fetchCats())!;
+    print("refreshing data");
+      
+    catFact = await fetchCats();
+    
+    print("done:$catFact");
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _refreshData().then((value) {
+      print("done refreshing");
+    }).catchError((error) {
+      print("we catch error: $error");
     });
   }
 
@@ -112,15 +118,16 @@ class _ApiExampleState extends State<ApiExample> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Cat Facts'),
+        title: const Text('Cat Facts'),
+        centerTitle: true,
       ),
       body: RefreshIndicator(
         onRefresh: _refreshData,
         child: ListView.builder(
-          itemCount: cats.length,
+          itemCount: catFact.length,
           itemBuilder: (context, index) {
             return ListTile(
-              title: Text("${cats[index].fact}"),
+              title: Text(catFact[index]),
             );
           },
         ),
