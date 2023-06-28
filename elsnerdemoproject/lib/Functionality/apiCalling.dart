@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -76,9 +78,9 @@ class CatApi {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['fact'] = this.fact;
-    data['length'] = this.length;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['fact'] = fact;
+    data['length'] = length;
     return data;
   }
 }

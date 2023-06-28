@@ -5,10 +5,10 @@ class ElsnerLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return const Row(
       mainAxisAlignment: MainAxisAlignment.center,
       mainAxisSize: MainAxisSize.min,
-      children: const [
+      children: [
         Text(
           "UN",
           style: TextStyle(
