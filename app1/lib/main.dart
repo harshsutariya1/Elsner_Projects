@@ -3,7 +3,7 @@ import 'package:app1/signupScreen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -29,14 +29,14 @@ class FirstScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Column(
+              const Column(
                 // mainAxisSize: MainAxisSize.min,
                 // mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     mainAxisSize: MainAxisSize.min,
-                    children: const [
+                    children: [
                        Text(
                         "UN",
                         style: TextStyle(
@@ -95,7 +95,7 @@ class FirstScreen extends StatelessWidget {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => LoginScreen(name1: "Harsh",name2: "Yash",name3: "Rutvi",)),
+                        MaterialPageRoute(builder: (context) => const LoginScreen(name1: "Harsh",name2: "Yash",name3: "Rutvi",)),
                       );
                     },
                     child: Expanded(
@@ -123,7 +123,7 @@ class FirstScreen extends StatelessWidget {
                   InkWell(
                     onTap: () {
                       Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => SignupScreen()));
+                          MaterialPageRoute(builder: (context) => const SignupScreen()));
                     },
                     child: Expanded(
                       child: Container(

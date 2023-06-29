@@ -1,13 +1,12 @@
 //Login and SignUp screens.
 
-// import 'package:elsnerdemoproject/homeScreen2.dart';
-import 'package:elsnerdemoproject/Screens/signupScreen.dart';
+import 'package:elsnerdemoproject/Screens/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:email_validator/email_validator.dart';
 
-import '../Functionality/loginFunctionality.dart';
-import 'homeScreen.dart';
+import '../Functionality/login_functionality.dart';
+import 'home_screen.dart';
 
 // ________________________________________________________________________________________
 // ____________________________Login_Screen________________________________________________

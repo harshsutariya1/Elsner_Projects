@@ -1,9 +1,11 @@
 //First page after login...
 // Gallery
 
+// ignore_for_file: avoid_print
+
 // import 'package:elsnerdemoproject/firstPage.dart';
-import 'package:elsnerdemoproject/Functionality/loginFunctionality.dart';
-import 'package:elsnerdemoproject/Screens/homeScreen2.dart';
+import 'package:elsnerdemoproject/Functionality/login_functionality.dart';
+import 'package:elsnerdemoproject/Screens/home_screen2.dart';
 import 'package:elsnerdemoproject/main.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';

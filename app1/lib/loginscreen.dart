@@ -1,8 +1,10 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
-  String? name1, name2, name3; //optional variable
-  LoginScreen({this.name1, this.name2, this.name3, super.key});
+  final String? name1, name2, name3; //optional variable
+  const LoginScreen({this.name1, this.name2, this.name3, super.key});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
