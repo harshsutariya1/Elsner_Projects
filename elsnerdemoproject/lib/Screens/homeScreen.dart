@@ -100,7 +100,7 @@ class _ListviewState extends State<Listview> {
             const Align(
               alignment: Alignment.centerLeft,
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: EdgeInsets.all(8.0),
                 child: Text(
                   "Images",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
@@ -266,7 +266,7 @@ Widget rowCards() {
           Container(
             padding: const EdgeInsets.only(left: 7,right: 7,top: 5,bottom: 5),
             decoration: BoxDecoration(
-              color: Color.fromARGB(255, 170, 75, 68),
+              color: const Color.fromARGB(255, 170, 75, 68),
               borderRadius: BorderRadius.circular(5)
             ),
             child: const Text("\$100",style: TextStyle(color: Colors.white),),
