@@ -73,17 +73,9 @@ class _ApiExampleState extends State<ApiExample> {
                               )));
                 },
                 child: ListTile(
-                  leading: CircleAvatar(
-                    radius: 30,
-                    backgroundColor: const Color.fromARGB(255, 233, 166, 10),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(100),
-                      child: CircleAvatar(
-                        backgroundColor: Colors.white,
-                        radius: 25,
-                        child: Image.network(imageurl),
-                      ),
-                    ),
+                  leading: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image.network(imageurl),
                   ),
                   title: Text(name),
                   subtitle: Text(email),
@@ -109,14 +101,14 @@ class ShowDetails extends StatelessWidget {
     required this.state,
   });
   final String name,
-  email,
-  imageurl,
-  phoneNumber,
-  city,
-  state,
-  country,
-  age,
-  gender;
+      email,
+      imageurl,
+      phoneNumber,
+      city,
+      state,
+      country,
+      age,
+      gender;
 
   Widget detailsRow({required String title, required String description}) {
     return SizedBox(
@@ -132,7 +124,7 @@ class ShowDetails extends StatelessWidget {
                 style: const TextStyle(fontWeight: FontWeight.bold),
               ),
               const SizedBox(
-                width: 20,
+                width: 10,
               ),
               Text(description),
             ],
@@ -155,13 +147,9 @@ class ShowDetails extends StatelessWidget {
             body: Center(
               child: Column(
                 children: [
-                  CircleAvatar(
-                    radius: 70,
-                    backgroundColor: const Color.fromARGB(0, 244, 67, 54),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(50),
-                      child: Image.network(imageurl),
-                    ),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(50),
+                    child: Image.network(imageurl),
                   ),
                   const SizedBox(
                     height: 30,
@@ -169,8 +157,7 @@ class ShowDetails extends StatelessWidget {
                   detailsRow(title: "Full Name:", description: name),
                   detailsRow(title: "Email Address:", description: email),
                   detailsRow(title: "Gender:", description: gender),
-                  detailsRow(
-                      title: "Phone Number:", description: phoneNumber),
+                  detailsRow(title: "Phone Number:", description: phoneNumber),
                   detailsRow(title: "Age:", description: age),
                   detailsRow(title: "City:", description: city),
                   detailsRow(title: "State:", description: state),
